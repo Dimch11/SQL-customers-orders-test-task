@@ -1,0 +1,26 @@
+CREATE TABLE "Customers" (
+	"Id"	INTEGER NOT NULL UNIQUE,
+	"Name"	TEXT NOT NULL,
+	PRIMARY KEY("Id" AUTOINCREMENT)
+);
+
+CREATE TABLE "Orders" (
+	"Id"	INTEGER NOT NULL UNIQUE,
+	"CustomerId"	INTEGER NOT NULL,
+	PRIMARY KEY("Id" AUTOINCREMENT),
+	FOREIGN KEY("CustomerId") REFERENCES "Customers"("Id") ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+INSERT INTO Customers (Id, Name) VALUES 
+(1, 'Max'),
+(2, 'Pavel'),
+(3, 'Ivan'),
+(4, 'Leonid');
+
+INSERT INTO Orders (Id, CustomerId) VALUES
+(1, 2),
+(2, 4);
+
+SELECT Name
+FROM Customers
+WHERE Id NOT IN (SELECT DISTINCT CustomerId FROM Orders);
