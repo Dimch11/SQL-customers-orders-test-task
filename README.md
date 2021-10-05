@@ -1,5 +1,7 @@
 # SQL-customers-orders-test-task
 
+![result](/result.png)
+
 # Задача
 Напишите SQL запрос в котором будет создание двух таблиц: Customers, которая содержит в себе столбцы
 
